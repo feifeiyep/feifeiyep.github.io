@@ -114,32 +114,30 @@
   });
 </script>
 
-  <meta name="description" content="俗话说：工欲善其事，必先利其器. 模拟 IC 设计必不可少的设计工具 – cadence 目前最新的版本为 61.7 打算写一个仿真系列教程，也是自己的摸索结果，非常理解那种想看到仿真结果但没人教你用的痛苦，所以我来为你清除科研绊脚石hhh">
+  <meta name="description" content="前言Monte Carlo (蒙特卡洛)分析是一种器件参数变化分析，使用随机抽样统计来估算数学函数的计算方法。 Monte Carlo 分析需要一个良好的随机数源。这种方法往往包含一些误差，但是随着随机抽取样本数量的增加，结果也会越来越精确。">
 <meta name="keywords" content="工具">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Cadence 51.41 CDB 数据格式转换成 61.7 OA 数据格式">
-<meta property="og:url" content="https://feifeiyep.github.io/2018/12/06/Cadence 617 系列-- CDB 数据格式转换成 OA 数据格式/index.html">
+<meta property="og:title" content="Cadence-617-系列-蒙特卡洛仿真">
+<meta property="og:url" content="https://feifeiyep.github.io/2018/12/12/Cadence-617-系列-蒙特卡洛仿真/index.html">
 <meta property="og:site_name" content="四牌楼下花生树">
-<meta property="og:description" content="俗话说：工欲善其事，必先利其器. 模拟 IC 设计必不可少的设计工具 – cadence 目前最新的版本为 61.7 打算写一个仿真系列教程，也是自己的摸索结果，非常理解那种想看到仿真结果但没人教你用的痛苦，所以我来为你清除科研绊脚石hhh">
+<meta property="og:description" content="前言Monte Carlo (蒙特卡洛)分析是一种器件参数变化分析，使用随机抽样统计来估算数学函数的计算方法。 Monte Carlo 分析需要一个良好的随机数源。这种方法往往包含一些误差，但是随着随机抽取样本数量的增加，结果也会越来越精确。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://ww1.sinaimg.cn/large/007iUjdily1fxy8075elhj319s0l0gup.jpg">
-<meta property="og:image" content="https://ae01.alicdn.com/kf/HTB1InNGaoLrK1Rjy1zb763enFXav.png">
-<meta property="og:image" content="https://ww1.sinaimg.cn/large/007iUjdily1fxy84uj7k6j30sw0ltdr6.jpg">
-<meta property="og:image" content="https://ww1.sinaimg.cn/large/007iUjdily1fxy85dk3faj30pp0jzn13.jpg">
-<meta property="og:image" content="https://ww1.sinaimg.cn/large/007iUjdily1fxy873s6erj30vc0thtm6.jpg">
-<meta property="og:image" content="https://ae01.alicdn.com/kf/HTB11.dIajzuK1RjSspe762iHVXae.png">
-<meta property="og:updated_time" content="2018-12-12T08:49:06.902Z">
+<meta property="og:image" content="https://ww1.sinaimg.cn/large/007iUjdily1fy40vgoo90j309l0aujrc.jpg">
+<meta property="og:image" content="https://ww1.sinaimg.cn/large/007iUjdily1fy41dve2kij30gy02xjrg.jpg">
+<meta property="og:image" content="https://ae01.alicdn.com/kf/HTB1vPyMaiDxK1RjSsph762HrpXaS.png">
+<meta property="og:image" content="https://ae01.alicdn.com/kf/HTB1TiGOanHuK1RkSndV760VwpXa1.png">
+<meta property="og:updated_time" content="2018-12-12T08:50:51.935Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Cadence 51.41 CDB 数据格式转换成 61.7 OA 数据格式">
-<meta name="twitter:description" content="俗话说：工欲善其事，必先利其器. 模拟 IC 设计必不可少的设计工具 – cadence 目前最新的版本为 61.7 打算写一个仿真系列教程，也是自己的摸索结果，非常理解那种想看到仿真结果但没人教你用的痛苦，所以我来为你清除科研绊脚石hhh">
-<meta name="twitter:image" content="https://ww1.sinaimg.cn/large/007iUjdily1fxy8075elhj319s0l0gup.jpg">
+<meta name="twitter:title" content="Cadence-617-系列-蒙特卡洛仿真">
+<meta name="twitter:description" content="前言Monte Carlo (蒙特卡洛)分析是一种器件参数变化分析，使用随机抽样统计来估算数学函数的计算方法。 Monte Carlo 分析需要一个良好的随机数源。这种方法往往包含一些误差，但是随着随机抽取样本数量的增加，结果也会越来越精确。">
+<meta name="twitter:image" content="https://ww1.sinaimg.cn/large/007iUjdily1fy40vgoo90j309l0aujrc.jpg">
 
 
 
 
 
 
-  <link rel="canonical" href="https://feifeiyep.github.io/2018/12/06/Cadence 617 系列-- CDB 数据格式转换成 OA 数据格式/">
+  <link rel="canonical" href="https://feifeiyep.github.io/2018/12/12/Cadence-617-系列-蒙特卡洛仿真/">
 
 
 
@@ -149,7 +147,7 @@
   };
 </script>
 
-  <title>Cadence 51.41 CDB 数据格式转换成 61.7 OA 数据格式 | 四牌楼下花生树</title>
+  <title>Cadence-617-系列-蒙特卡洛仿真 | 四牌楼下花生树</title>
   
 
 
@@ -332,7 +330,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://feifeiyep.github.io/2018/12/06/Cadence 617 系列-- CDB 数据格式转换成 OA 数据格式/">
+    <link itemprop="mainEntityOfPage" href="https://feifeiyep.github.io/2018/12/12/Cadence-617-系列-蒙特卡洛仿真/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="feifei">
@@ -349,7 +347,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Cadence 51.41 CDB 数据格式转换成 61.7 OA 数据格式
+          <h1 class="post-title" itemprop="name headline">Cadence-617-系列-蒙特卡洛仿真
               
             
           </h1>
@@ -374,24 +372,12 @@
                 
               
 
-              <time title="创建时间：2018-12-06 14:27:04" itemprop="dateCreated datePublished" datetime="2018-12-06T14:27:04+08:00">2018-12-06</time>
+              <time title="创建时间：2018-12-12 17:00:00 / 修改时间：16:50:51" itemprop="dateCreated datePublished" datetime="2018-12-12T17:00:00+08:00">2018-12-12</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-12-12 16:49:06" itemprop="dateModified" datetime="2018-12-12T16:49:06+08:00">2018-12-12</time>
               
             
           </span>
@@ -423,8 +409,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/12/06/Cadence 617 系列-- CDB 数据格式转换成 OA 数据格式/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/12/06/Cadence 617 系列-- CDB 数据格式转换成 OA 数据格式/" itemprop="commentCount"></span>
+                <a href="/2018/12/12/Cadence-617-系列-蒙特卡洛仿真/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/12/12/Cadence-617-系列-蒙特卡洛仿真/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -432,7 +418,7 @@
 
           
           
-             <span id="/2018/12/06/Cadence 617 系列-- CDB 数据格式转换成 OA 数据格式/" class="leancloud_visitors" data-flag-title="Cadence 51.41 CDB 数据格式转换成 61.7 OA 数据格式">
+             <span id="/2018/12/12/Cadence-617-系列-蒙特卡洛仿真/" class="leancloud_visitors" data-flag-title="Cadence-617-系列-蒙特卡洛仿真">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -463,54 +449,39 @@
       
 
       
-        <p><em>俗话说：工欲善其事，必先利其器.</em></p>
-<p><em>模拟 IC 设计必不可少的设计工具 – cadence 目前最新的版本为 61.7</em></p>
-<p><em>打算写一个仿真系列教程，也是自己的摸索结果，非常理解那种想看到仿真结果但没人教你用的痛苦，所以我来为你清除科研绊脚石hhh</em></p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p><em>Monte Carlo (蒙特卡洛)分析是一种器件参数变化分析，使用随机抽样统计来估算数学函数的计算方法。</em></p>
+<p><em>Monte Carlo 分析需要一个良好的随机数源。这种方法往往包含一些误差，但是随着随机抽取样本数量的增加，结果也会越来越精确。</em></p>
 <hr>
 <a id="more"></a>
-<h1 id="关于-cadence-51-41-amp-61-7"><a href="#关于-cadence-51-41-amp-61-7" class="headerlink" title="关于 cadence 51.41 &amp; 61.7"></a>关于 cadence 51.41 &amp; 61.7</h1><p>cadence 61.7 版本在2016年就上线了，企业早就安装并使用了最新版本，对于高校，除了个别土豪实验室，大部分还是使用 51.41 版本，毕竟换版本也是不少钱。</p>
-<p>51.41 版本用过的人最多，基本的使用技巧都已经清晰，网上有很多和仿真相关的使用教程，比较容易上手。</p>
-<p>61.7 版本主要在 版图layout 和 工艺角、蒙卡上有了质的飞越，使用起来更便捷更有效率，做到了不切换就可以完成 设计-仿真 操作</p>
-<p>大概我们实验也算土豪实验室之一吧，差不多一年前就用上了新版本，一开始确实有点不适应，51.41 版本和 61.7版本的界面还是差别挺大的。</p>
-<ul>
-<li>51.41 启动命令  icfb&amp;     </li>
-<li>61.7  启动命令  virtuoso&amp;</li>
-<li>51.41 数据存储格式 CDB</li>
-<li>61.7  数据存储格式 OA </li>
-</ul>
-<p>两种版本数据格式不一样，如果想在新版本上看老版本的设计，需要对数据格式做个转换</p>
-<h1 id="CDB-格式转换成-OA-格式"><a href="#CDB-格式转换成-OA-格式" class="headerlink" title="CDB 格式转换成 OA 格式"></a>CDB 格式转换成 OA 格式</h1><p><em>以下步骤是在linux 系统下使用cadence,默认已经成功安装好 cadence 61.7版本</em></p>
-<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>Step1: 新建一个文件夹用来存放 cadence 61.7 版本的设计</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir NEW_DEISGN</span><br></pre></td></tr></table></figure>
-<p>Step2: 把旧版 cadence 51.41 数据中的  *.cdslck 文件删掉</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm *.cdslck</span><br></pre></td></tr></table></figure>
-<p>Step3: 在新建的文件夹下用打开cadence</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">virtuoso &amp;</span><br></pre></td></tr></table></figure>
-<p>step4： 保存cds.lib , 目的是为了获取默认的 analog 库的位置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">打开 lib manager 界面，选择 Edit &gt; Library Path Manager &gt; File &gt; Save As</span><br></pre></td></tr></table></figure>
-<p><img src="https://ww1.sinaimg.cn/large/007iUjdily1fxy8075elhj319s0l0gup.jpg" alt=""></p>
-<p>打开保存的 cds.lib 文件，可以看到一些默认的库的设置，这个需要再转换完成后添加到新的 cds.lib 文件中</p>
-<p><img src="https://ae01.alicdn.com/kf/HTB1InNGaoLrK1Rjy1zb763enFXav.png" alt=""></p>
-<h2 id="转换操作"><a href="#转换操作" class="headerlink" title="转换操作"></a>转换操作</h2><ul>
-<li>step1: 打开 CIW 界面：</li>
-</ul>
-<p><img src="https://ww1.sinaimg.cn/large/007iUjdily1fxy84uj7k6j30sw0ltdr6.jpg" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">依次点击： Tools &gt; Conversion Tool Box &gt; CDB to OpenAccess Translator</span><br></pre></td></tr></table></figure>
-<ul>
-<li>step2: 参数设置：</li>
-</ul>
-<p><img src="https://ww1.sinaimg.cn/large/007iUjdily1fxy85dk3faj30pp0jzn13.jpg" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. Path to cds.lib file  填写旧版本的路径及文件</span><br><span class="line">2. 右边栏只留下需要转换的库</span><br><span class="line">3. OK 即可</span><br></pre></td></tr></table></figure>
-<p>转换后的数据会保存在新建的这个文件夹下，需要花一定的时间，耐心等待<br>检查 cdb2oa.gui.log 文件，看是否转换正确</p>
-<ul>
-<li>step3: 添加 默认的库</li>
-</ul>
-<p>转换完成后可在该文件下打开 cds.lib 文件，如下图的上半图，只有刚才选择转换的库，但是做设计仿真，还需要像 analog 默认的库，因此需要在这个 cds.lib 下把原本默认的库加进去，添加的语句就是上面保存下来文件中的 INCLUDE $CDSHOME/share/cdssetup/dfII/cds.lib </p>
-<p><img src="https://ww1.sinaimg.cn/large/007iUjdily1fxy873s6erj30vc0thtm6.jpg" alt=""></p>
-<p>添加完成保存，然后在 lib mabager 中 refresh 一下，就大工告成啦~</p>
-<p><img src="https://ae01.alicdn.com/kf/HTB11.dIajzuK1RjSspe762iHVXae.png" alt=""></p>
-<p>注：</p>
-<p>数据格式转换后不影响任何仿真结果，无需担心~</p>
+<h1 id="Monte-Carlo-的意义"><a href="#Monte-Carlo-的意义" class="headerlink" title="Monte Carlo 的意义"></a>Monte Carlo 的意义</h1><p>问题： 已经跑了 TT\FF\SS\FS\SF 完整工艺角，为啥还需要跑 Monte Carlo ?</p>
+<p>以下图为例说明：</p>
+<ol>
+<li><p>TT\FF\SS\FS\SF 完整工艺角分别占据五个端角对应的位置，但并不是完备的全覆盖实际的工艺变化范围。</p>
+</li>
+<li><p>灰色的覆盖位置是 Monte Carlo 分析覆盖的工艺角范围，可完备分析到所有的工艺偏差，因此可得到电路的良率。</p>
+</li>
+</ol>
+<p><img src="https://ww1.sinaimg.cn/large/007iUjdily1fy40vgoo90j309l0aujrc.jpg" alt=""></p>
+<h1 id="Monte-Carlo-分析前准备"><a href="#Monte-Carlo-分析前准备" class="headerlink" title="Monte Carlo 分析前准备"></a>Monte Carlo 分析前准备</h1><h2 id="工艺库"><a href="#工艺库" class="headerlink" title="工艺库"></a>工艺库</h2><p>Monte Carlo 分析是基于统计分析，需要 Foundry 提供关于工艺变化分布概率，因此首先需要检查工艺文件是否支持Monte Carlo分析。</p>
+<p>仿真前，更改对应的器件模型section:</p>
+<p>SMIC 工艺的  MOS 管的 section 为 mos_mc。</p>
+<p>GF 工艺的  MOS 管的 section 为 fet_statistical。</p>
+<p>……</p>
+<h1 id="Monte-Carlo-仿真流程"><a href="#Monte-Carlo-仿真流程" class="headerlink" title="Monte Carlo 仿真流程"></a>Monte Carlo 仿真流程</h1><h2 id="仿真环境设置"><a href="#仿真环境设置" class="headerlink" title="仿真环境设置"></a>仿真环境设置</h2><p>step1： </p>
+<p>Launch ADE XL </p>
+<p>Click to add test 中添加一个仿真环境 ADE L 并设置好基本的 Model file 和 section, 如图中所示</p>
+<p><img src="https://ww1.sinaimg.cn/large/007iUjdily1fy41dve2kij30gy02xjrg.jpg" alt=""></p>
+<p>step2: </p>
+<p>在 adexl 环境中设置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">设置为 No Parasitics/LDE</span><br><span class="line"></span><br><span class="line">必须勾选 Corners 中的 Nominal 选项，以标准工艺作为参考</span><br></pre></td></tr></table></figure>
+<p>step3：</p>
+<p>在 adexl 环境中设置 Monte Carlo Sampling</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Statistical Variation 选择 ALL， 就是两种偏差同时考虑</span><br><span class="line"></span><br><span class="line">Number of points :填写要仿真的次数</span><br><span class="line"></span><br><span class="line">其余的勾选参考下图：</span><br></pre></td></tr></table></figure>
+<p><img src="https://ae01.alicdn.com/kf/HTB1vPyMaiDxK1RjSsph762HrpXaS.png" alt=""></p>
+<h2 id="结果分析"><a href="#结果分析" class="headerlink" title="结果分析"></a>结果分析</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">打开 adexl 的 Results 一栏</span><br><span class="line"></span><br><span class="line">红色三角下选择 Detail, 可看到具体的仿真结果与波形，需要看波形点 plot 按钮</span><br><span class="line"></span><br><span class="line">只有计算结果才能生成柱状图分析：如图右所示，图中会给出相应概率区间内的结果分布，另外给出拟合函数的参数，如最大离散数值等</span><br></pre></td></tr></table></figure>
+<p><img src="https://ae01.alicdn.com/kf/HTB1TiGOanHuK1RkSndV760VwpXa1.png" alt=""></p>
+<p>以上，就是 Monte-Carlo 的关键仿真步骤，有些及其基础的操作没放图~</p>
+<p>如有疑问，可留言交流~</p>
 
       
     </div>
@@ -552,8 +523,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/26/IC-求职分享/" rel="next" title=" IC 求职分享 ">
-                <i class="fa fa-chevron-left"></i>  IC 求职分享 
+              <a href="/2018/12/12/Cadence-617-版图后仿真以及前仿对比/" rel="next" title="Cadence 617 版图后仿真以及前仿对比">
+                <i class="fa fa-chevron-left"></i> Cadence 617 版图后仿真以及前仿对比
               </a>
             
           </div>
@@ -561,10 +532,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/12/07/CS-求职分享-算法岗/" rel="prev" title=" CS 求职分享--算法岗 ">
-                 CS 求职分享--算法岗  <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -729,7 +696,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#关于-cadence-51-41-amp-61-7"><span class="nav-number">1.</span> <span class="nav-text">关于 cadence 51.41 &amp; 61.7</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CDB-格式转换成-OA-格式"><span class="nav-number">2.</span> <span class="nav-text">CDB 格式转换成 OA 格式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#准备"><span class="nav-number">2.1.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#转换操作"><span class="nav-number">2.2.</span> <span class="nav-text">转换操作</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Monte-Carlo-的意义"><span class="nav-number">2.</span> <span class="nav-text">Monte Carlo 的意义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Monte-Carlo-分析前准备"><span class="nav-number">3.</span> <span class="nav-text">Monte Carlo 分析前准备</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#工艺库"><span class="nav-number">3.1.</span> <span class="nav-text">工艺库</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Monte-Carlo-仿真流程"><span class="nav-number">4.</span> <span class="nav-text">Monte Carlo 仿真流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#仿真环境设置"><span class="nav-number">4.1.</span> <span class="nav-text">仿真环境设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结果分析"><span class="nav-number">4.2.</span> <span class="nav-text">结果分析</span></a></li></ol></li></ol></div>
             
 
           </div>
